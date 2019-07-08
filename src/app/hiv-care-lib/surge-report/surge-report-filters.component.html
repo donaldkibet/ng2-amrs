@@ -1,0 +1,25 @@
+<div class="padding-sm">
+    <div style="padding: 0px; border: 1px double lightgray; cursor: pointer;" class="row"
+        (click)="filterCollapsed = !filterCollapsed">
+        <span class="text-info" style="margin:2px; font-weight:bold;">
+            <span class="glyphicon glyphicon-filter" style="font-weight: normal;"></span> Report filters</span>
+        <span style="margin:2px;" class="label label-default pull-right">
+            <span class="glyphicon glyphicon-chevron-down" *ngIf="filterCollapsed"></span>
+            <span class="glyphicon glyphicon-chevron-up" *ngIf="!filterCollapsed"></span>
+        </span>
+    </div>
+    <div *ngIf="!filterCollapsed" style="padding: 0px; border: 1px double lightgray;border-top: 0px; cursor: pointer;"
+        class="row padding-bottom">
+        <div class="row" style="padding: 4px;border-left: 4px solid lightgray">
+            <div class="col-xs-6">
+                <div class="form-row">
+                    <label for="startDate">Select Year Week</label>
+                    <input id="startDate" type="week" class="form-control" [(ngModel)]="startDateString" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-top">
+        <button type="submit" class="btn btn-primary">Generate Report <span class="fa fa-cog"></span></button>
+    </div>
+</div>

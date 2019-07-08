@@ -87,6 +87,9 @@ import {
   ProgramWorkFlowResourceService
 } from '../openmrs-api/program-workflow-resource.service';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
+import { SurgeReportFiltersComponent } from './surge-report/surge-report-filters.component';
+import { SurgeReportTabularComponent } from './surge-report/surge-report-tabular.component';
+import { SurgeReportBaseComponent } from './surge-report/surge-report-base.component';
 export function highchartsFactory() {
   const hc = require('highcharts');
   const hcm = require('highcharts/highcharts-more');
@@ -150,7 +153,10 @@ export function highchartsFactory() {
     VisualizationPatientListComponent,
     HivSummaryIndicatorsPatientListComponent,
     HivSummaryMonthlyTabularComponent,
-    HivMonthlySummaryIndicatorsPatientListComponent
+    HivMonthlySummaryIndicatorsPatientListComponent,
+    SurgeReportFiltersComponent,
+    SurgeReportTabularComponent,
+    SurgeReportBaseComponent
   ],
   declarations: [
     Moh731TabularComponent,
@@ -176,7 +182,10 @@ export function highchartsFactory() {
     HivSummaryIndicatorsPatientListComponent,
     HivMonthlySummaryIndicatorBaseComponent,
     HivSummaryMonthlyTabularComponent,
-    HivMonthlySummaryIndicatorsPatientListComponent
+    HivMonthlySummaryIndicatorsPatientListComponent,
+    SurgeReportFiltersComponent,
+    SurgeReportTabularComponent,
+    SurgeReportBaseComponent
   ],
   providers: [MOHReportService,
     LocationResourceService,
