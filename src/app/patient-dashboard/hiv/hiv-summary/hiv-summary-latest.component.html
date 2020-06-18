@@ -38,6 +38,12 @@
     <li class="list-group-item" style="font-size:large">TB Treatment Start Date: {{ hivSummary?.tb_tx_start_date | date:'dd-MM-yyyy'}}</li>
     <li class="list-group-item" style="font-size:large">TB Treatment End Date: {{ hivSummary?.tb_tx_end_date | date:'dd-MM-yyyy'}}</li>
     <li *ngIf="hivSummary?.mdt_session_number && hivSummary?.mdt_session_number !== null" class="list-group-item" style="font-size:large">MDT Session Number: {{hivSummary?.mdt_session_number}}</li>
+    <li *ngIf="patient?.person?.gender === 'F' && patient?.person?.age >=15 && patient?.person?.age <= 49" class="list-group-item" style="font-size:large">
+      <span [ngClass]="{'glyphicon glyphicon-warning-sign text-warning': hivSummary?.contraceptive_method?.period === 'Short term', 'glyphicon glyphicon-warning-sign text-danger': hivSummary?.contraceptive_method?.period === null }"></span>
+      <span [ngClass]="{'text-danger': hivSummary?.contraceptive_method?.period === null,'text-warning': hivSummary?.contraceptive_method?.period === 'Short term'}">
+        Contraception Method :  {{hivSummary?.contraceptive_method?.period}} {{'(' + hivSummary?.contraceptive_method?.name + ')'| titlecase}}
+      </span>
+    </li>
   </ul>
 </div>
 

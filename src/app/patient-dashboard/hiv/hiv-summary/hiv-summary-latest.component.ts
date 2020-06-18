@@ -21,10 +21,17 @@ export class HivSummaryLatestComponent implements OnInit, OnDestroy {
   public patient: Patient;
   public errors: any = [];
 
-  constructor(private hivSummaryService: HivSummaryService) { }
+  constructor(private hivSummaryService: HivSummaryService, private patientService: PatientService) { }
 
   public ngOnInit() {
+    this.loadPatient();
     this.loadHivSummary(this.patientUuid);
+  }
+
+  public loadPatient() {
+    this.patientService.currentlyLoadedPatient.subscribe((data) => {
+      this.patient = data;
+    });
   }
 
   public loadHivSummary(patientUuid) {
