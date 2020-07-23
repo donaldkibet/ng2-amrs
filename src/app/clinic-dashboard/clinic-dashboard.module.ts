@@ -58,13 +58,15 @@ import {
 } from './referral/patient-referral-program.module';
 import { ClinicRoutesFactory
 } from '../navigation/side-navigation/clinic-side-nav/clinic-side-nav-routes.factory';
+import { MicroFrontendReportComponent } from './micro-frontend-report/micro-frontend-report.component';
 
 @NgModule({
   declarations: [
     /**
      * Components / Directives/ Pipes
      */
-    ClinicDashboardComponent
+    ClinicDashboardComponent,
+    MicroFrontendReportComponent
   ],
   imports: [
     CommonModule,
