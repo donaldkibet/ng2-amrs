@@ -98,7 +98,10 @@ import { MonthlyReportComponent } from './monthly-report/monthly-report.componen
 import { PatientGainsAndLosesPatientListComponent } from './patient-gains-and-loses/patient-gains-and-loses-patient-list/patient-gains-and-loses-patient-list.component';
 import { PatientGainLosesReportComponent } from '../clinic-dashboard/hiv/patient-gain-and-loses-report/patient-gain-and-loses-report';
 import { PatientGainsAndLosesComponent } from './patient-gains-and-loses/patient-gains-and-loses.component';
-
+import { FamilyTestingBaseComponent } from './family-testing/family-testing-base.component';
+import { FamilyTestingPatientlistComponent } from './family-testing/family-testing-patient-list.component';
+import { FamilyTestingTreeComponent } from './family-testing/family-testing-tree.component';
+import { FamilyTestingContactComponent } from './family-testing/family-testing-contact-list.component';
 @NgModule({
   imports: [
     RouterModule,
@@ -173,7 +176,11 @@ import { PatientGainsAndLosesComponent } from './patient-gains-and-loses/patient
     HeiIndicatorsFilterComponent,
     HeiIndicatorsTabularComponent,
     HeiIndicatorsPatientListComponent,
-    HeiIndicatorsPdfViewComponent
+    HeiIndicatorsPdfViewComponent,
+    FamilyTestingBaseComponent,
+    FamilyTestingPatientlistComponent,
+    FamilyTestingTreeComponent,
+    FamilyTestingContactComponent
   ],
   declarations: [
     Moh731TabularComponent,
@@ -226,7 +233,11 @@ import { PatientGainsAndLosesComponent } from './patient-gains-and-loses/patient
     HeiIndicatorsPdfViewComponent,
     PatientGainsAndLosesPatientListComponent,
     PatientGainLosesReportComponent,
-    PatientGainsAndLosesComponent
+    PatientGainsAndLosesComponent,
+    FamilyTestingBaseComponent,
+    FamilyTestingPatientlistComponent,
+    FamilyTestingTreeComponent,
+    FamilyTestingContactComponent
   ],
   providers: [
     MOHReportService,
