@@ -31,19 +31,22 @@ export class FamilyTestingContactComponent implements OnInit {
       width: 80,
       pinned: 'left'
     },
-    { field: 'patient_id', headerName: 'Patient ID' },
-    { field: 'family_member_name', headerName: 'Name' },
-    { field: 'relationship_type', headerName: 'Relationship Type' },
-    { field: 'age', headerName: 'Age' },
-    { field: 'status', headerName: 'Status' }
+    { field: 'fm_name', headerName: 'Name' },
+    { field: 'fm_age', headerName: 'Age' },
+    { field: 'fm_gender', headerName: 'Gender' },
+    { field: 'fm_phone', headerName: 'Contacts' },
+    { field: 'relationship_type', headerName: 'Relation' },
+    { field: 'fm_status', headerName: 'HIV status' },
+    { field: 'reported_test_date', headerName: 'HIV test date' },
+    { field: 'in_care', headerName: 'In care' },
+    { field: 'ccc_number', headerName: 'CCC number' },
+    { field: 'nearest_center', headerName: 'Nearest Center' }
   ];
   public ngOnInit() {
     this.route.queryParams.subscribe((params) => {
-      console.log(params);
-      this.patientId = params.patient_id;
+      this.getFamilyTestingContactListData(params.patient_id);
     });
     this.gridOptions.columnDefs = this.columnDefs;
-    this.getFamilyTestingContactListData();
   }
 
   constructor(
@@ -52,10 +55,10 @@ export class FamilyTestingContactComponent implements OnInit {
     public location: Location
   ) {}
 
-  public getFamilyTestingContactListData() {
+  public getFamilyTestingContactListData(patientId: string) {
     this.isLoading = true;
     this.familyTestingService
-      .getFamilyTestingReportDate(this.patientId)
+      .getFamilyTestingReportDate(patientId)
       .subscribe((data) => {
         if (data.error) {
           this.showInfoMessage = true;

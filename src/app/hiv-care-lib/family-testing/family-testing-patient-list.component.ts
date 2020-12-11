@@ -73,9 +73,10 @@ export class FamilyTestingPatientlistComponent implements OnInit {
     this.gridOptions.rowSelection = 'single';
     let selectedIndicator: any;
     this.gridOptions.onCellClicked = (e) => {
+      console.log(e.data);
       if (e.rowPinned !== 'bottom') {
         selectedIndicator = {
-          patient_id: e.data.person_id
+          patient_id: e.data.patient_id
         };
         this.patientSelected.emit(selectedIndicator);
       }
