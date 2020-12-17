@@ -61,7 +61,6 @@ export class FamilyTestingBaseComponent implements OnInit {
   }
 
   public onLocationChange(location_uuid) {
-    console.log(location_uuid);
     this.locationUuid = location_uuid;
   }
 

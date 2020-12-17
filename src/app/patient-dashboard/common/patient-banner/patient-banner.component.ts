@@ -20,6 +20,8 @@ import { Patient } from '../../../models/patient.model';
 import { PatientRelationshipService } from '../patient-relationships/patient-relationship.service';
 import { Person } from '../../../models/person.model';
 import { Relationship } from 'src/app/models/relationship.model';
+import { UserDefaultPropertiesService } from 'src/app/user-default-properties/user-default-properties.service';
+import { concat } from 'lodash';
 
 @Component({
   selector: 'patient-banner',
@@ -49,13 +51,15 @@ export class PatientBannerComponent implements OnInit, OnDestroy, OnChanges {
   private enrolled: boolean;
   private enrolledToHEIProgram: boolean;
   private isPatientEnrolledToHIVProgram: boolean;
+  private currentLocation: { uuid: string; display: string };
 
   constructor(
     private patientService: PatientService,
     private patientRelationshipService: PatientRelationshipService,
     private modalService: BsModalService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private propertyLocationService: UserDefaultPropertiesService
   ) {}
 
   public ngOnInit() {
@@ -64,6 +68,7 @@ export class PatientBannerComponent implements OnInit, OnDestroy, OnChanges {
         this.patient = new Patient({});
         if (patient) {
           this.patient = patient;
+          console.log(patient);
           this.searchIdentifiers = patient.searchIdentifiers;
           this.getOvcEnrollments(
             patient.enrolledPrograms,
@@ -98,6 +103,8 @@ export class PatientBannerComponent implements OnInit, OnDestroy, OnChanges {
         }
       }
     );
+    this.currentLocation = this.propertyLocationService.getCurrentUserDefaultLocationObject();
+    console.log(this.currentLocation);
   }
 
   public ngOnChanges(changes: SimpleChanges) {
@@ -159,6 +166,17 @@ export class PatientBannerComponent implements OnInit, OnDestroy, OnChanges {
           }
         }
       });
+  }
+
+  public navigateToFamilyHistory() {
+    this.router.navigate(
+      [
+        `/clinic-dashboard/${this.currentLocation.uuid}/hiv/family-testing/contact-list`
+      ],
+      {
+        queryParams: { patient_id: 197775 }
+      }
+    );
   }
   private getPatientAge(birthdate) {
     if (birthdate) {
